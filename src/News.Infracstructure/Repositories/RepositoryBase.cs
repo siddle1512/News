@@ -46,6 +46,7 @@ namespace News.Infracstructure.Repositories
             _newsDbContext.Entry(entity).State = EntityState.Modified;
             await _newsDbContext.SaveChangesAsync();
         }
+        
         public async Task DeleteAsync(T entity)
         {
             _newsDbContext.Set<T>().Remove(entity);
