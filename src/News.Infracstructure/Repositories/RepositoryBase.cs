@@ -12,7 +12,7 @@ namespace News.Infracstructure.Repositories
 {
     public class RepositoryBase<T> : IAsyncRepository<T> where T : EntityBase
     {
-        private readonly NewsDbContext _newsDbContext;
+        protected readonly NewsDbContext _newsDbContext;
 
         public RepositoryBase(NewsDbContext newsDbContext)
         {
@@ -46,7 +46,7 @@ namespace News.Infracstructure.Repositories
             _newsDbContext.Entry(entity).State = EntityState.Modified;
             await _newsDbContext.SaveChangesAsync();
         }
-        
+
         public async Task DeleteAsync(T entity)
         {
             _newsDbContext.Set<T>().Remove(entity);
